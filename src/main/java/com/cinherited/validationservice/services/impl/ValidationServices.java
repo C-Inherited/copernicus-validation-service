@@ -41,8 +41,8 @@ public class ValidationServices implements IValidationServices {
 
     @Override
     public boolean checkIsCountryValid(ValidationDTO validationDTO) {
-            char[] chars = validationDTO.getStrToValidate().toCharArray();
-            for (char c : chars) if (Character.isDigit(c)) return false;
+        char[] chars = validationDTO.getStrToValidate().toCharArray();
+        for (char c : chars) if (Character.isDigit(c)) return false;
         return true;
     }
 }

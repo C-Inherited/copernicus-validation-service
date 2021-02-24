@@ -21,6 +21,7 @@ import javax.validation.Valid;
 @RequestMapping("/validation")
 public class ValidationController implements IValidationController {
 
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -74,6 +75,5 @@ public class ValidationController implements IValidationController {
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
-
 
 }
