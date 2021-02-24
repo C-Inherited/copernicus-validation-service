@@ -21,4 +21,28 @@ public class ValidationServices implements IValidationServices {
 
         return (pattern.matcher(validationDTO.getStrToValidate()).find());
     }
+
+    @Override
+    public boolean checkIsNameValid(ValidationDTO validationDTO) {
+        if (validationDTO.getValidationType() != ValidationType.NAME) throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        if (validationDTO.getStrToValidate() == null) throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        if (!validationDTO.getStrToValidate().trim().contains(" ")) return false;
+        else {
+            char[] chars = validationDTO.getStrToValidate().toCharArray();
+            for (char c : chars) if (Character.isDigit(c)) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public boolean checkIsPhoneNumberValid(ValidationDTO validationDTO) {
+        return validationDTO.getStrToValidate().matches("\\d{9}") && (validationDTO.getStrToValidate().charAt(0) == '6' || validationDTO.getStrToValidate().charAt(0) == '9');
+    }
+
+    @Override
+    public boolean checkIsCountryValid(ValidationDTO validationDTO) {
+            char[] chars = validationDTO.getStrToValidate().toCharArray();
+            for (char c : chars) if (Character.isDigit(c)) return false;
+        return true;
+    }
 }
