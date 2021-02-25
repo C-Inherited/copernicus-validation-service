@@ -36,22 +36,22 @@ public class ValidationController implements IValidationController {
     IValidationServices validationServices;
 
 
-    @GetMapping("/email")
-    public boolean checkIsEmailValid(@RequestBody @Valid ValidationDTO validationDTO) {
+    @PostMapping("/email")
+    public boolean checkIsEmailValid(@RequestBody @Valid ValidationDTO validationDTO, @RequestHeader(value = "Authorization") String authorizationHeader) {
         return validationServices.checkIsEmailValid(validationDTO);
     }
 
-    @GetMapping("/name")
-    public boolean checkIsNameValid(@RequestBody @Valid ValidationDTO validationDTO) {
+    @PostMapping("/name")
+    public boolean checkIsNameValid(@RequestBody @Valid ValidationDTO validationDTO, @RequestHeader(value = "Authorization") String authorizationHeader) {
         return validationServices.checkIsNameValid(validationDTO);
     }
-    @GetMapping("/phone-number")
-    public boolean checkIsPhoneNumberValid(@RequestBody @Valid ValidationDTO validationDTO) {
+    @PostMapping("/phone-number")
+    public boolean checkIsPhoneNumberValid(@RequestBody @Valid ValidationDTO validationDTO, @RequestHeader(value = "Authorization") String authorizationHeader) {
         return validationServices.checkIsPhoneNumberValid(validationDTO);
     }
 
-    @GetMapping("/country")
-    public boolean checkIsCountryValid(@RequestBody @Valid ValidationDTO validationDTO) {
+    @PostMapping("/country")
+    public boolean checkIsCountryValid(@RequestBody @Valid ValidationDTO validationDTO, @RequestHeader(value = "Authorization") String authorizationHeader) {
         return validationServices.checkIsCountryValid(validationDTO);
     }
 
