@@ -36,21 +36,21 @@ public class ValidationController implements IValidationController {
     IValidationServices validationServices;
 
 
-    @GetMapping("/email")
+    @PostMapping("/email")
     public boolean checkIsEmailValid(@RequestBody @Valid ValidationDTO validationDTO) {
         return validationServices.checkIsEmailValid(validationDTO);
     }
 
-    @GetMapping("/name")
+    @PostMapping("/name")
     public boolean checkIsNameValid(@RequestBody @Valid ValidationDTO validationDTO) {
         return validationServices.checkIsNameValid(validationDTO);
     }
-    @GetMapping("/phone-number")
+    @PostMapping("/phone-number")
     public boolean checkIsPhoneNumberValid(@RequestBody @Valid ValidationDTO validationDTO) {
         return validationServices.checkIsPhoneNumberValid(validationDTO);
     }
 
-    @GetMapping("/country")
+    @PostMapping("/country")
     public boolean checkIsCountryValid(@RequestBody @Valid ValidationDTO validationDTO) {
         return validationServices.checkIsCountryValid(validationDTO);
     }
